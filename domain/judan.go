@@ -2,17 +2,17 @@ package domain
 
 type JudahPlayer struct{}
 
-func (j JudahPlayer) Name() Name {
+func (p JudahPlayer) Name() Name {
 	return "Judah"
 }
 
-func (j JudahPlayer) Start() {}
+func (p JudahPlayer) Start() {}
 
-func (j JudahPlayer) Move() Move {
+func (p JudahPlayer) Move() Move {
 	return RefuseMove
 }
 
-func (j JudahPlayer) Result(Result) {}
+func (p JudahPlayer) Result(Result) {}
 
 func (p JudahPlayer) Clone() IPlayer {
 	return p

@@ -4,30 +4,36 @@ type TalionPlayer struct {
 	lastPartnerMove Move
 }
 
-func (j *TalionPlayer) Name() Name {
+func (p *TalionPlayer) Name() Name {
 	return "Talion"
 }
 
-func (j *TalionPlayer) Start() {
-	j.lastPartnerMove = ""
+func (p *TalionPlayer) Start() {
+	p.init()
 }
 
-func (j *TalionPlayer) Move() Move {
-	if j.lastPartnerMove == "" {
+func (p *TalionPlayer) Move() Move {
+	if p.lastPartnerMove == "" {
 		return CooperateMove
 	}
 
-	if j.lastPartnerMove == CooperateMove {
+	if p.lastPartnerMove == CooperateMove {
 		return CooperateMove
 	}
 
 	return RefuseMove
 }
 
-func (j *TalionPlayer) Result(r Result) {
-	j.lastPartnerMove = r.His.Move
+func (p *TalionPlayer) Result(r Result) {
+	p.lastPartnerMove = r.His.Move
 }
 
 func (p *TalionPlayer) Clone() IPlayer {
-	return &TalionPlayer{}
+	t := &TalionPlayer{}
+	t.init()
+	return t
+}
+
+func (p *TalionPlayer) init() {
+	p.lastPartnerMove = ""
 }

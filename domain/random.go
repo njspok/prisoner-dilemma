@@ -7,13 +7,13 @@ import (
 
 type RandomPlayer struct{}
 
-func (j RandomPlayer) Name() Name {
+func (p RandomPlayer) Name() Name {
 	return "Random"
 }
 
-func (j RandomPlayer) Start() {}
+func (p RandomPlayer) Start() {}
 
-func (j RandomPlayer) Move() Move {
+func (p RandomPlayer) Move() Move {
 	rand.Seed(time.Now().UnixNano())
 	r := rand.Intn(2)
 	if r == 0 {
@@ -22,7 +22,7 @@ func (j RandomPlayer) Move() Move {
 	return CooperateMove
 }
 
-func (j RandomPlayer) Result(Result) {}
+func (p RandomPlayer) Result(Result) {}
 
 func (p RandomPlayer) Clone() IPlayer {
 	return p
