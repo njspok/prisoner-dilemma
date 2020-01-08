@@ -49,8 +49,8 @@ func makePlayerPairs(players []IPlayer) []pair {
 	for _, p1 := range players {
 		for _, p2 := range players {
 			pairs = append(pairs, pair{
-				p1: p1,
-				p2: p2,
+				p1: p1.Clone(),
+				p2: p2.Clone(),
 			})
 		}
 	}
