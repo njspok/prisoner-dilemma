@@ -6,7 +6,7 @@ func main() {
 	t := domain.NewTournament([]domain.IPlayer{
 		&domain.JesusPlayer{},
 		&domain.JudahPlayer{},
-		&domain.RandomPlayer{},
+		&domain.CrazyPlayer{},
 		&domain.TalionPlayer{},
 	})
 	tbl := t.Play()
