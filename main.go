@@ -4,10 +4,10 @@ import "github.com/njspok/prisoner-dilemma/domain"
 
 func main() {
 	t := domain.NewTournament([]domain.IPlayer{
-		&domain.JesusPlayer{},
-		&domain.JudahPlayer{},
-		&domain.CrazyPlayer{},
-		&domain.TalionPlayer{},
+		domain.NewJesusPlayer(),
+		domain.NewJudahPlayer(),
+		domain.NewCrazyPlayer(),
+		domain.NewTalionPlayer(),
 	})
 	tbl := t.Play()
 	tbl.Print()

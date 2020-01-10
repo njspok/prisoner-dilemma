@@ -1,5 +1,13 @@
 package domain
 
+const notMoved Move = ""
+
+func NewTalionPlayer() *TalionPlayer {
+	t := &TalionPlayer{}
+	t.init()
+	return t
+}
+
 type TalionPlayer struct {
 	lastPartnerMove Move
 }
@@ -13,7 +21,7 @@ func (p *TalionPlayer) Start() {
 }
 
 func (p *TalionPlayer) Move() Move {
-	if p.lastPartnerMove == "" {
+	if p.lastPartnerMove == notMoved {
 		return CooperateMove
 	}
 
@@ -29,11 +37,9 @@ func (p *TalionPlayer) Result(r Result) {
 }
 
 func (p *TalionPlayer) Clone() IPlayer {
-	t := &TalionPlayer{}
-	t.init()
-	return t
+	return NewTalionPlayer()
 }
 
 func (p *TalionPlayer) init() {
-	p.lastPartnerMove = ""
+	p.lastPartnerMove = notMoved
 }

@@ -5,6 +5,10 @@ import (
 	"time"
 )
 
+func NewCrazyPlayer() *CrazyPlayer {
+	return &CrazyPlayer{}
+}
+
 type CrazyPlayer struct{}
 
 func (p CrazyPlayer) Name() Name {
@@ -25,5 +29,5 @@ func (p CrazyPlayer) Move() Move {
 func (p CrazyPlayer) Result(Result) {}
 
 func (p CrazyPlayer) Clone() IPlayer {
-	return p
+	return NewCrazyPlayer()
 }

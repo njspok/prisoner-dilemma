@@ -1,5 +1,9 @@
 package domain
 
+func NewJesusPlayer() *JesusPlayer {
+	return &JesusPlayer{}
+}
+
 type JesusPlayer struct{}
 
 func (p JesusPlayer) Name() Name {
@@ -15,5 +19,5 @@ func (p JesusPlayer) Move() Move {
 func (p JesusPlayer) Result(r Result) {}
 
 func (p JesusPlayer) Clone() IPlayer {
-	return p
+	return NewJesusPlayer()
 }
