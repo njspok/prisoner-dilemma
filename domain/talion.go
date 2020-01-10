@@ -25,11 +25,7 @@ func (p *TalionPlayer) Move() Move {
 		return CooperateMove
 	}
 
-	if p.lastPartnerMove == CooperateMove {
-		return CooperateMove
-	}
-
-	return RefuseMove
+	return p.lastPartnerMove
 }
 
 func (p *TalionPlayer) Result(r Result) {
