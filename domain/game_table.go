@@ -3,13 +3,13 @@ package domain
 import "fmt"
 
 type GameTable struct {
-	rounds []Round
+	rounds []RoundRow
 	score1 Score
 	score2 Score
 }
 
 func (t *GameTable) Append(s1, s2 Stat) {
-	t.rounds = append(t.rounds, Round{
+	t.rounds = append(t.rounds, RoundRow{
 		Player1: s1,
 		Player2: s2,
 	})
@@ -39,7 +39,7 @@ func (t *GameTable) Score2() Score {
 	return t.score2
 }
 
-type Round struct {
+type RoundRow struct {
 	Player1 Stat
 	Player2 Stat
 }
