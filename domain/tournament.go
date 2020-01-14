@@ -27,7 +27,7 @@ func (t *Tournament) Play() TournamentTable {
 
 	// each pairs make game
 	for _, pair := range pairs {
-		game := NewGame(pair.p1, pair.p2)
+		game := NewGame(pair.p1, pair.p2, NewRounder(pair.p1, pair.p2))
 		tbl := game.Play(100)
 
 		// save result game in table

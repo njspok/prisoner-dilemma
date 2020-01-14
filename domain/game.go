@@ -1,10 +1,10 @@
 package domain
 
-func NewGame(p1 IPlayer, p2 IPlayer) *Game {
+func NewGame(p1 IPlayer, p2 IPlayer, r IRound) *Game {
 	return &Game{
 		p1:      p1,
 		p2:      p2,
-		rounder: NewRounder(p1, p2),
+		rounder: r,
 	}
 }
 
