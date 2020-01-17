@@ -8,6 +8,7 @@ func main() {
 		domain.NewJudahPlayer(),
 		domain.NewCrazyPlayer(),
 		domain.NewTalionPlayer(),
+		domain.NewVindictivePlayer(),
 	})
 	tbl := t.Play()
 	tbl.Print()
