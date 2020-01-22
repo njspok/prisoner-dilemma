@@ -31,5 +31,22 @@ func TestRounder_Play(t *testing.T) {
 		// check result
 		require.Equal(t, NewStat(CooperateMove, 3, ForCooperateReward), s1)
 		require.Equal(t, NewStat(CooperateMove, 3, ForCooperateReward), s2)
+		p1.AssertExpectations(t)
+		p2.AssertExpectations(t)
+	})
+	t.Run("unknown move", func(t *testing.T) {
+		p1 := &testPlayer{}
+		p2 := &testPlayer{}
+
+		p1.On("Move").Return(Move("shit1"))
+		p2.On("Move").Return(Move("shit2"))
+
+		r := NewRounder(p1, p2)
+
+		require.PanicsWithValue(t, "unknown move combination shit1 shit2", func() {
+			r.Play()
+		})
+		p1.AssertExpectations(t)
+		p2.AssertExpectations(t)
 	})
 }
