@@ -18,8 +18,21 @@ func (r *Rounder) Play() (Stat, Stat) {
 	move1 := r.p1.Move()
 	move2 := r.p2.Move()
 
-	var stat1, stat2 Stat
+	stat1, stat2 := reward(move1, move2)
 
+	r.p1.Result(Result{
+		You: stat1,
+		His: stat2,
+	})
+	r.p2.Result(Result{
+		You: stat2,
+		His: stat1,
+	})
+
+	return stat1, stat2
+}
+
+func reward(move1, move2 Move) (stat1 Stat, stat2 Stat) {
 	switch move1 + move2 {
 	case CooperateMove + CooperateMove:
 		stat1 = NewStat(move1, 3, ForCooperateReward)
@@ -37,14 +50,5 @@ func (r *Rounder) Play() (Stat, Stat) {
 		panic(fmt.Sprintf("unknown move combination %s %s", move1, move2))
 	}
 
-	r.p1.Result(Result{
-		You: stat1,
-		His: stat2,
-	})
-	r.p2.Result(Result{
-		You: stat2,
-		His: stat1,
-	})
-
-	return stat1, stat2
+	return
 }
